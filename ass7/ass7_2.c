@@ -5,28 +5,17 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-
 void alarm_handler(int signum) {
     printf("Parent: Received an alarm signal from the child. Resuming...\n");
 }
-
-
 int main() {
     pid_t child_pid;
-
-
-
-
     signal(SIGALRM, alarm_handler);
-
-
-
 
     if ((child_pid = fork()) == -1) {
         perror("fork");
         exit(1);
     }
-
 
     if (child_pid == 0) {
     
